@@ -1,0 +1,31 @@
+	<div *ngIf="isLoading" style="text-align: center;margin: 10px;">
+
+            <img  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="  /><span style="margin-left: 10px;">Loading...</span>
+	</div>	
+
+
+
+	<div class="order-detail" *ngIf="!isLoading">
+
+<!-- 		<p *ngIf="results" style="font-size: 12pt; color:#666362; text-align: center;">Найдено позиций: {{results.length}}</p>
+ -->
+
+	   		<div class="detail-panel" *ngFor="let item of results">
+	   			
+	   				<div class="col euro">
+	   					{{ item.euro }}
+						<div class="tm tm_{{item.trademark_id}}"> {{item.trademark_name}}</div>
+	   				</div>
+
+	   				<div class="col price">
+	   					{{ item.price.toLocaleString() }} руб
+	   				</div>
+
+	   				<div class="col amount">
+	   					{{ item.amount }}шт
+	   				</div>
+	   			
+	   		
+	   		</div>
+
+	</div>

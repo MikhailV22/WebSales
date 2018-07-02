@@ -1,0 +1,223 @@
+<!-- <div class="nav">
+
+      <a routerLink="/search-by-code" routerLinkActive="active">
+        
+      <img src="../assets/btnByCode.png"  height="30" style="top:-5px">
+      По коду
+
+    </a>
+      <a routerLink="/search-by-car" routerLinkActive="active">
+      <img src="../assets/btnByStep.png"  height="30" style="top:-5px">
+        По авто
+      </a>
+</div>  
+ -->
+
+<h3>Поиск по автомобилю</h3>
+<div class='by-car-panel'>
+
+<!-- <div id="selected-car-panel" class="selected-car-panel" (click)="showCarPanel()"
+	*ngIf="searchParam.selectedCar">
+	{{searchParam.selectedCar.fullName}}
+</div>
+ -->
+<div id="select-car-panel" class="select-car-panel">
+
+<div class="overlay-selector" (click)="showMarks()">
+	<div class="select-button" [class.not-selected]="searchParam.selectedMark.id===0">
+		<div class="select-button__label">Марка</div>
+		<div class="select-button__value">{{searchParam.selectedMark.name}}</div>
+		<div class="select-button__icon icon icon_arrow"></div>
+	</div>
+</div>
+
+<div class="overlay-selector" (click)="showModels()">
+	<div class="select-button" [class.not-selected]="searchParam.selectedModel.id===0">
+		<div class="select-button__label">Модель</div>
+
+		
+		<div *ngIf="getModels() && searchParam.selectedModel.id===0" class="select-button__label">({{getModels().length}})</div>
+
+		<div class="select-button__value">{{searchParam.selectedModel.name}}</div>
+		<div class="select-button__icon icon icon_arrow"></div>
+	</div>
+</div>
+
+<div class="overlay-selector" (click)="showGenerations()">
+	<div class="select-button" [class.not-selected]="searchParam.selectedGeneration.id===0">
+		<div class="select-button__label">Поколение</div>
+		<div class="select-button__value">
+		<span>{{searchParam.selectedGeneration.name}}</span>
+		<span style="margin-left:10px; ">{{searchParam.selectedGeneration.years}}</span>
+		</div>
+		<div class="select-button__icon icon icon_arrow"></div>
+	</div>
+</div>
+
+<div class="overlay-selector" (click)="showCars()">
+	<div class="select-button" [class.not-selected]="searchParam.selectedCar.id===0">
+		<div *ngIf="!searchParam.selectedCar.id" class="select-button__label">Автомобиль</div>
+		<div *ngIf="cars && searchParam.selectedCar.id===0" class="select-button__label">({{cars.length}})</div>
+
+		<div class="select-button__value">{{searchParam.selectedCar.fullName}}</div>
+		<div class="select-button__icon icon icon_arrow"></div>
+	</div>
+</div>
+
+<div class="overlay" *ngIf="marksVisible">
+	<div class="overlay-controls">
+		<div class="overlay-controls__name">Выберите марку</div>
+		<div class="overlay-controls__close" (click)="showMarks()">
+			<mat-icon>close</mat-icon>
+		</div>
+		
+	</div>
+
+	<div class="overlay__field">
+		<div class="input input_search">
+			<span class="input__label icon search"></span>
+			<div class="input__box">
+				<input [(ngModel)]="searchString" 
+						(keyup.enter)="getMarks()"
+				type="text" class="input__value" data-target="brand-search" placeholder="Наименование марки" value="">
+			</div>
+		</div>
+	</div>
+
+	<div class="overlay__content" >
+		<div class="item-container" [ngStyle]="{height: (getMarks().length+1)*46/2 + 'px'}">
+		  	<div class="record_cols_2 item-block" *ngFor="let item of getMarks() ; let i = index" (click)="setMark(item);showMarks();">
+		  		{{item.name}}
+		  	</div>
+	  	</div>
+  	</div>
+
+</div>
+
+
+<div class="overlay" *ngIf="modelsVisible">
+	<div class="overlay-controls">
+		<div class="overlay-controls__name">Выберите модель</div>
+		<div class="overlay-controls__close" (click)="showModels()">
+			<mat-icon>close</mat-icon>
+		</div>
+		
+	</div>
+
+	<div class="overlay__field">
+		<div class="input input_search">
+			<span class="input__label icon search"></span>
+			<div class="input__box">
+				<input [(ngModel)]="searchString" 
+						(keyup.enter)="getModels()"
+				type="text" class="input__value" data-target="brand-search" placeholder="Наименование модели" value="">
+
+			</div>
+		</div>
+	</div>
+
+	<div class="overlay__content">
+		<div class="item-container">
+	  	<div class="record item-block" *ngFor="let item of getModels() ; let i = index" (click)="setModel(item);showModels();">
+	  		{{item.name}}
+	  	</div>
+	  	</div>
+  	</div>
+
+</div>
+
+<div class="overlay" *ngIf="generationsVisible">
+	<div class="overlay-controls">
+		<div class="overlay-controls__name">Выберите поколение</div>
+		<div class="overlay-controls__close" (click)="showGenerations()">
+			<mat-icon>close</mat-icon>
+		</div>
+		
+	</div>
+
+	<div class="overlay__content">
+	  	<div class="record" *ngFor="let item of generations ; let i = index" (click)="setGeneration(item);showGenerations();">
+	  		<span> {{item.name}} </span> <span style="float:right;">{{item.years}}</span>
+	  	</div>
+  	</div>
+
+</div>
+
+<div class="overlay" *ngIf="carsVisible">
+	<div class="overlay-controls">
+		<div class="overlay-controls__name">Выберите автомобиль</div>
+		<div class="overlay-controls__close" (click)="showCars()">
+			<mat-icon>close</mat-icon>
+		</div>
+		
+	</div>
+
+	<div class="overlay__content">
+	  	<div class="record" *ngFor="let item of cars ; let i = index">
+
+	  		<span *ngIf="i==0 || (cars[i-1] && item.bodynameRus!==cars[i-1].bodynameRus)" class="item-bodytype">{{item.bodynameRus}}</span> 
+
+	  		
+	  		<div (click)="setCar(item);showCars();"
+	  		[class.selected]="item==searchParam.selectedCar" 
+	  		[class.on-stock]="item.onStock==null" 
+	  		class="item-list">{{item.fullName}}</div>
+	  	</div>
+  	</div>
+
+</div>
+
+
+	
+<!-- 	<div class='car-panel' *ngIf="marks">
+		<select [(ngModel)]="searchParam.selectedMark" (ngModelChange)="setMark($event)"
+		>
+	                <option *ngFor="let c of marks" [ngValue]="c">{{c.name}}</option>
+	  	</select>
+	</div>  	
+
+
+
+	<div class='car-panel' *ngIf="models">
+		<select [(ngModel)]="searchParam.selectedModel" (ngModelChange)="setModel($event)">
+	                 <option *ngFor="let c of models" [ngValue]="c">{{c.name}}</option>
+	  	</select>
+	</div>
+
+
+	<div class='car-panel' *ngIf="generations">
+		<select [(ngModel)]="searchParam.selectedGeneration" (ngModelChange)="setGeneration($event)">
+	                 <option *ngFor="let c of generations" [ngValue]="c">{{c.name}} {{c.years}}</option>
+	  	</select>
+	</div>
+ -->
+
+<!-- 	<div class='car-panel'>
+	  	<div *ngFor="let item of cars ; let i = index" (click)="setCar(item)">
+
+	  		<span *ngIf="i==0 || (cars[i-1] && item.bodynameRus!==cars[i-1].bodynameRus)" class="item-bodytype">{{item.bodynameRus}}</span> 
+
+	  		<span  [class.selected]="item==searchParam.selectedCar" 
+	  		[class.on-stock]="item.onStock==null" 
+	  		class="item-list">{{item.fullName}}</span> 
+	  		
+	  	</div>
+	</div>
+ -->
+	<!-- <button (click)="search()">Искать</button> -->
+</div>
+
+
+<app-whouse-dialog (onRefresh)="onRefresh()"></app-whouse-dialog>
+<app-prodtype-dialog (onRefresh)="onRefresh()"></app-prodtype-dialog>
+<p class="message">{{message}}</p>
+
+	<!-- <div #scrollMe>scrollMe</div> -->
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="search()">Искать</button>
+  </div>
+
+<app-result-panel></app-result-panel>
+
+
+</div>

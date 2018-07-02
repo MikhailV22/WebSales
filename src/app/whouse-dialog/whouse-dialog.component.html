@@ -1,0 +1,23 @@
+<!--  	   	<div class="check-whouse" *ngFor="let item of whouses">
+	   		<input [(ngModel)]="item.selected" (change)="change()" type="checkbox" class="checkbox" id="checkbox{{item.id}}" name="whouse"/> 
+			<label for="checkbox{{item.id}}">{{item.name}}</label>
+
+
+		</div>
+ --> 
+
+
+<mat-form-field style="width: 100%">
+  <mat-select (selectionChange)="onChange()"
+		[(ngModel)]="searchParam.selectedWhouse"
+  placeholder="Склады"  multiple>
+    <mat-option *ngFor="let item of whouses" [value]="item">{{item.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<!-- <button (click)="test()">test</button> -->
+
+<!-- 	   	<div *ngFor="let item of whouses">
+	   		{{item.name}}{{item.real_name}}{{item.selected}}
+		</div>
+ -->

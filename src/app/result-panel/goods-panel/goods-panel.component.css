@@ -1,0 +1,111 @@
+.goods-panel{
+	max-width: 750px;
+	margin: 15px 0px;
+	padding: 0px;
+}
+
+.list{
+/*    border:1px solid red;
+*/}
+
+.list .record{
+    border-bottom: 1px dashed silver;
+    padding: 2px; 
+}
+
+.list .record:last-of-type{
+    border-bottom: 0px dashed silver;
+    padding: 2px; 
+}
+/*
+.record:nth-child(odd){
+     background: #FFF
+}
+*/
+
+.my-flex-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 750px;
+    min-width: 300px;
+/*    height: 35px;
+*/}     
+.my-flex-block{
+/*    min-width: 140px;
+*/    word-wrap:normal;
+    margin-right: 5px; 
+    /*border: 1px solid red;*/
+}               
+
+
+.tm_1001 {
+    display: inline-block;
+    color: blue;
+}
+
+.tm_1002 {
+    display: inline-block;
+    color: green;
+}
+
+.tm_1003 {
+    display: inline-block;
+    color: gray;
+}
+.tm_1010 {
+    display: inline-block;
+    color: #342D7E;
+} 
+
+.button{
+    display: inline-block;
+    text-align: center;
+    background-color: #3090C7;
+    border: 1px solid #2e6da4;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 5px;
+    padding: 0px 5px;
+    color: white;
+}
+.button:hover{
+    text-decoration: none;
+    background-color: #337ab7;
+    cursor: pointer;
+}
+
+.whouse_name{
+    display: inline-block;
+}
+.whouse_real_name{
+    display: block;
+    font-size: 0.9rem;
+    color: #ff8c1a;
+}
+
+.deliveryTime{
+
+    border-radius: 2px;
+    padding: 0px 2px;
+    color: white;
+    font-size: 1rem;
+    background-color: #AEAFB0; 
+    display: block;
+    max-width: 75px;
+/*    display: inline-block;
+    text-align: center;
+    background-color: #AEAFB0;
+    border: 1px solid #2e6da4;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 5px;
+    padding: 0px 5px;
+    color: white;
+*/}
+
+.price{
+    display: inline-block;
+}

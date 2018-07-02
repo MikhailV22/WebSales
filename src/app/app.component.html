@@ -1,0 +1,79 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="page">
+	<div id="top_panel" *ngIf="user_service.isLogin()">
+<!-- 		<span *ngIf="user_service.isLogin()">
+		<a routerLink="/login" routerLinkActive="active">{{user_service.user.name}}</a>
+		</span> -->
+		<app-cart-banner></app-cart-banner>
+
+
+<div *ngIf="user_service.isLogin()" class="my_nav">
+		<button mat-fab color="white" [matMenuTriggerFor]="appMenu">
+			<span style="font-weight: bold;">Меню</span> 
+		</button>
+	
+	<mat-menu #appMenu="matMenu">
+
+	  <button mat-menu-item routerLink="/search-by-code" routerLinkActive="active"> 
+<!-- 		<mat-icon>search</mat-icon> -->
+		
+      <img src="./assets/btnByCode.png"  height="40" style="top:-5px">
+        
+	  	Поиск по коду
+	  </button>
+
+	  <button mat-menu-item routerLink="/search-by-car" routerLinkActive="active">
+<!-- 		<mat-icon>search</mat-icon> -->
+      <img src="./assets/btnByStep.png"  height="30" style="top:-5px">
+	    Поиск по автомобилю
+	  </button>
+
+<!-- 	  <button mat-menu-item routerLink="/search-by-car" routerLinkActive="active">
+		<mat-icon>search</mat-icon>
+	    Поиск товара
+	  </button>
+ -->
+	  <button mat-menu-item routerLink="/orders" routerLinkActive="active">
+		<mat-icon>content_paste</mat-icon>
+	  	Заказы
+	  </button>
+
+	  <button mat-menu-item routerLink="/cartlist" routerLinkActive="active">
+		<mat-icon>shopping_cart</mat-icon>
+	  	Корзина
+	  </button>
+
+	  <button mat-menu-item routerLink="/login" routerLinkActive="active">
+		<mat-icon>account_box</mat-icon>
+	  	Аккаунт
+	  </button>
+
+	  <a mat-menu-item href="https://autoglass-russia.ru/WebSales/" >
+		<mat-icon>desktop_windows</mat-icon>
+	  	Полная версия сайта
+	  </a>
+	</mat-menu>
+
+<!-- 	<button mat-icon-button [matMenuTriggerFor]="appMenu">
+	   <mat-icon>more_vert</mat-icon>
+	</button> -->
+</div>
+
+
+
+	</div>	
+<div id="container">
+
+
+<!-- 	<nav>
+	    <a routerLink="/search-by-code" routerLinkActive="active">По коду</a>
+	    <a routerLink="/search-by-car" routerLinkActive="active">По авто</a>
+	    
+	</nav>
+ -->
+
+
+	<router-outlet></router-outlet>
+
+</div>
+</div>

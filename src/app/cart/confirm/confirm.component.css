@@ -1,0 +1,51 @@
+.confirm-panel{
+	/*border:1px solid red;*/
+	padding: 0 5px;
+	margin-bottom: 10px;
+}
+
+
+.notification{
+    padding:10px;
+}
+
+
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+.example-selected-value {
+  margin: 15px 0;
+}
+
+
+.buttons{
+    margin:0px;
+    padding: 5px 5px;
+    /*width: 140px;*/
+    text-align: right;
+    /*border:1px solid red;*/
+}
+
+.full-width {
+  width: 100%;
+}
+
+.transportCompany{
+  /*background-color: silver;*/
+  border:1px solid silver;
+  padding: 5px;
+}
+
+.valid{
+  background-color: green;
+}
+
+.invalid{
+  background-color: red;
+}

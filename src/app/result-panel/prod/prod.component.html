@@ -1,0 +1,68 @@
+<div class='result-block' 
+	[class.isempty]="searchResult.onStock===0"
+	[class.selected]="searchResult.id === selectedId"
+>
+
+
+	<div>
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<div class="euro">{{searchResult.euro}}</div>
+
+
+                                <div *ngIf="searchResult.prodtype_id==1" class="WS_GLASS">
+                                    <div class="WS_GLASS GLASS {{searchResult.euro.substring(5, 7)}}">
+                                        <div class="WS_GLASS TOP {{searchResult.euro.substring(7, 9)}}"></div>
+                                    </div>
+                                </div>                
+
+
+
+				<img *ngIf="searchResult.picturename" src="{{getImageLink(searchResult.picturename)}}" height="25" />
+
+	        </div>
+	        <div *ngIf="searchResult.years!=='-'" class='my-flex-block'>
+		        <div class='years'>{{searchResult.years}}</div>
+	        </div>
+
+		</div>
+
+        <div class="name">{{searchResult.name}}</div>
+
+
+	</div>
+
+		<a [class.selected]="showProdPanel" class="button" (click)="prodPanelToggle()">
+	        Описание
+	    </a>
+		<a [class.selected]="showGoodsPanel"
+			*ngIf="searchResult.onStock!==0" class="button" (click)="goodsPanelToggle()">
+	        Наличие
+	    </a>
+
+
+
+<!-- 	<div>
+		<a [routerLink]="['/prodinfo', searchResult.id]">
+	        Дополнительно
+	    </a>
+	</div>
+
+ -->	
+ 	<div *ngIf="showGoodsPanel">
+		<app-goods-panel [searchResult]='searchResult'
+				(onVoted)="onVoted($event)"
+		></app-goods-panel>
+	</div>
+
+	<div *ngIf="showProdPanel">
+		<app-prod-panel [searchResult]='searchResult'>
+			
+		</app-prod-panel>
+	</div>
+
+<!--     <a routerLink="/login" routerLinkActive="active">Login</a>
+ -->
+
+
+</div>

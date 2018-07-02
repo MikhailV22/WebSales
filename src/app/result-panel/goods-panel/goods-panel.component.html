@@ -1,0 +1,59 @@
+<div class='goods-panel'>
+	<div *ngIf="isLoading" style="text-align: center;">
+            <img  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+	</div>	
+<!-- <p *ngIf="isLoading" style="font-size: 12pt; color:red;text-align: center;">
+	Loading...
+</p>
+ -->
+
+<p *ngIf="results && false" style="font-size: 10pt; color:blue;text-align: center;">Найдено позиций: {{results.length}}</p>
+
+
+<div class="list">
+<div class="record" *ngFor="let item of results">
+
+	<div class="my-flex-container">
+	        <div class="my-flex-block tm_{{item.trademark_id}}" style="min-width: 80px;">
+	        	{{item.trademark_name}} 
+	        </div>
+	        <div class='my-flex-block' style="text-align: center;">
+	        	<div class="whouse_name">{{item.whouse_name_short}}</div>
+	        	<div *ngIf="userService.user.status==1" class="whouse_real_name">
+	        		{{item.whouse_real_name}}
+	        	</div>
+	        	<div *ngIf="item.deliveryTime" class='deliveryTime'>от {{item.deliveryTime}} дней</div>
+	        </div>
+
+<!-- 	        <div class='my-flex-block button' (click)="showPrice($event,item)" style="min-width: 70px; text-align: center;">
+	        	Цена
+	        </div> -->
+	        <div class="my-flex-block"> 
+	        <div class='price button' (click)="showPrice($event,item)" style="min-width: 70px; text-align: center;">
+	        	<!-- {{item.price}} р. -->
+	        	Цена
+	        </div>
+	        	
+				<input 
+					size="1" 
+				  	[(ngModel)]="item.amountNeed" placeholder="Кол-во"
+				  />
+				  <i *ngIf="false" class="material-icons">add_shopping_cart</i>
+		  		<mat-icon (click)="addCart(item)" style="position: relative; top:8px">add_shopping_cart</mat-icon>
+
+				<button *ngIf="false" (click)="addCart(item)">Add</button>	
+				<img *ngIf="false" src="./assets/add.png"  height="30" style="top:-5px" width="30"
+					(click)="addCart(item)"
+				>
+	        </div> 
+	</div>
+
+	  
+
+
+</div>
+</div>
+<!-- <a style="float: right;margin-top:10px; " (click)="vote(true)">Скрыть</a> -->
+
+</div>
+

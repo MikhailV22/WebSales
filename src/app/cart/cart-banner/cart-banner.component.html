@@ -1,0 +1,6 @@
+<div id="cart-banner" *ngIf="user_service.isLogin()">
+	<a routerLink="/cartlist" routerLinkActive="active">Корзина
+	  {{cartService.amount_total}} шт
+	  {{cartService.price_total.toLocaleString()}} руб
+  </a>
+</div>

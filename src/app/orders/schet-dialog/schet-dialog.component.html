@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Счет на E-Mail</h2>
+<mat-dialog-content>
+	Счет будет отправлен автоматически в течение 5 минут на указанный E-Mail. 
+		
+	</mat-dialog-content>
+
+
+<br/>
+	<mat-form-field class="full-width">
+      <input matInput placeholder="EMail"
+      [(ngModel)]="data.email" 
+
+      name="email"
+      id="email">
+  	</mat-form-field>
+
+
+<mat-dialog-actions>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button (click)="onYesClick()">Yes</button>
+  <button mat-button mat-dialog-close>No</button>
+</mat-dialog-actions>

@@ -1,0 +1,26 @@
+.record{
+	padding-bottom: 5px;
+}
+/*.orders-panel .record:nth-child(even){
+	background-color: #f2f2f2;
+}*/
+
+
+.doc_date{
+	/*color:red; */
+	text-align:center;
+	background-color:white;
+	border-top: 1px solid gray;
+	padding-top: 5px;
+	margin-top: 20px;
+}
+
+.doc_date .date{
+	font-size: 1.8rem;
+	position: relative;
+	color: gray;
+	top:-18px;
+	z-index: 10;
+	background-color: white;
+	padding: 5px;
+}

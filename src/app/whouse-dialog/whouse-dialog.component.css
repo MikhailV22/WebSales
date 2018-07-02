@@ -1,0 +1,31 @@
+.check-whouse{
+	display: inline-block;
+	padding: 2px 5px;
+	margin-right: 10px;
+	border-radius: 5px; 
+	width: 70px;
+
+	background-color: silver;
+	color: white;
+}
+.caption{
+	display: inline-block;
+	/*background-color: silver;*/
+}
+
+/* Cначала обозначаем стили для IE8 и более старых версий
+т.е. здесь мы немного облагораживаем стандартный чекбокс. */
+.checkbox {
+  vertical-align: top;
+  margin: 0 2px 0 0;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+/* Это для всех браузеров, кроме совсем старых, которые не поддерживают
+селекторы с плюсом. Показываем, что label кликабелен. */
+.checkbox + label {
+  margin: 3px 0 0 0;
+  cursor: pointer;
+  line-height: 20px;
+}

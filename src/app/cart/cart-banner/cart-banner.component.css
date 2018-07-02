@@ -1,0 +1,24 @@
+#cart-banner{
+	display: inline-block;
+	margin-top: 10px;
+	padding:0 5px;
+}
+
+#cart-banner a{
+	color: white;
+}
+
+.afterAdd{
+	background-color: #5EFB6E;
+	border-radius: 3px;
+}
+
+#cart-banner.afterAdd a{
+	color: black;
+
+}
+
+.afterRemove{
+	background-color: #F70D1A;
+	border-radius: 3px;
+}

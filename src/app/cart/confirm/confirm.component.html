@@ -1,0 +1,308 @@
+<div  class="confirm-panel">
+
+
+	<ng-container *ngIf="order.id">
+	<h3 id="confirm-panel">Заказ оформлен</h3>
+	<div class="alert alert-warning">
+
+                <div class="ConfirmPayBlock">
+                <div style="font-size: large;margin: 20px 0px 20px 20px;color: #666; ">
+                    <p>
+                    Ваш заказ 
+                    <span style="color:black;">{{order.orignum}}</span> 
+                    
+                     на сумму 
+                     <span style="color:black;">{{order.cost}}</span> 
+                    рублей оформлен.
+                    <p>
+                    При самовывозе обязательно назовите номер заказа на складе
+                    </p>
+                </div>
+                </div>
+
+
+		<!-- <a routerLink="/cartlist" routerLinkActive="active">Корзина</a> -->
+	</div>
+	</ng-container>
+
+
+	<!-- {{cartService.selectedWhouse.name}}({{cartService.selectedWhouse.real_name}})
+	<p>{{cartService.getOrderInfo(cartService.selectedWhouse.id).cost}}</p>
+	<p>{{cartService.getOrderInfo(cartService.selectedWhouse.id).amount}}</p>
+	 -->
+	<ng-container *ngIf="!order.id">
+		
+	
+	<h3 id="confirm-panel">Оформление заказа</h3>
+	<p class="notification bg-warning">Раздел в разработке</p>
+
+	<div *ngIf="cartService.selectedWhouse.delivery_commentary" class="alert alert-warning">
+		{{cartService.selectedWhouse.delivery_commentary}}
+	</div>
+
+	<form [formGroup]="myform" (ngSubmit)="onSubmit()" novalidate>
+
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Доставка</h3>
+	  </div>
+	  <div class="panel-body">
+
+		<div *ngIf="selectedDeliveryType.invalid && 
+		(selectedDeliveryType.dirty ||selectedDeliveryType.touched)"
+		     class="alert alert-danger">
+		  <div *ngIf="selectedDeliveryType.errors.required">
+		    Укажите вид доставки.
+		  </div>
+		</div>	
+
+
+		<div class="paytype-panel">
+			<mat-radio-group class="example-radio-group" 
+				(change)="deliveryTypeChange($event)" 
+				formControlName="selectedDeliveryType"
+				id="selectedDeliveryType">
+			  <mat-radio-button class="example-radio-button" *ngFor="let types of deliveryTypes" [value]="types">
+			    {{types.name}}
+			    <span class="label label-info" *ngIf="types.id===0">
+			    	Товар резервируется на срок до 3 дней
+			    </span> 
+			  </mat-radio-button>
+
+			</mat-radio-group>
+		</div>
+	  </div>
+	</div>
+
+
+<!-- {{ myform.value | json }}<br/>
+<span [class.valid]="myform.valid" [class.invalid]="myform.invalid" > form{{ myform.status }}</span><br/>
+selectedDeliveryType_{{ myform.get('selectedDeliveryType').status }}<br/>
+selectedTransportCompany_{{ myform.get('selectedTransportCompany').status }}<br/>
+selectedDeliveryAddress_{{ myform.get('selectedDeliveryAddress').status }}<br/>
+transportCompany.name_{{ myform.get('transportCompany.name').status }}<br/>
+selectedPayType_{{ myform.get('selectedPayType').status }}<br/>
+transportCompany.packType_{{ myform.get('transportCompany.packType').status }}<br/>
+ -->
+ 	<div class="panel panel-default" *ngIf="myform.get('selectedDeliveryType').value.id===1">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Доставка</h3>
+	  </div>
+
+	  <div class="panel-body">
+
+
+
+	  	<div>
+		  	<h3 style="display: inline-block;">
+		  		Стомость
+		  	</h3>
+
+		  	<h2 style="display: inline-block;">
+		  		<span class="label label-default">
+		  			{{getDeliveryCost().toLocaleString()}} руб
+		  		</span>
+		  	</h2>
+	  	</div>
+
+
+		<mat-form-field>
+		  <input matInput [matDatepicker]="picker1" placeholder="Дата доставки" [formControl]="date" [min]="minDate">
+		  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+		  <mat-datepicker touchUi="true" #picker1></mat-datepicker>
+		</mat-form-field>
+
+
+
+
+
+		<mat-form-field style="width: 100%">
+		  <mat-select 
+				formControlName="selectedDeliveryAddress"
+				placeholder="Адрес доставки">
+		    <mat-option *ngFor="let item of deliveryAddress" [value]="item">{{item.text}}</mat-option>
+		  </mat-select>
+		</mat-form-field>
+
+<!-- 		<div *ngIf="selectedDeliveryAddress.status=='INVALID'"
+		     class="alert alert-danger">
+		  <div *ngIf="selectedDeliveryAddress.errors.required">
+		    Укажите адрес доставки.
+		  </div>
+		</div>	
+ -->
+
+
+		<div class="transportCompanyList">
+
+<!-- 			<div *ngIf="selectedTransportCompany.invalid"
+			     class="alert alert-danger">
+			  <div *ngIf="selectedTransportCompany.errors.required">
+			     Укажите транспортную компанию.
+			  </div>
+			</div>	
+ -->
+
+
+			<mat-radio-group id="selectedTransportCompany" formControlName="selectedTransportCompany"
+			(change)="selectedTransportCompanyChange($event)" 
+			>
+			  <mat-radio-button class="example-radio-button" *ngFor="let item of transportCompanyList" [value]="item">
+			    {{item.name}}
+			  </mat-radio-button>
+			</mat-radio-group>
+
+			<div class="transportCompany" *ngIf="myform.get('selectedTransportCompany').value && myform.get('selectedTransportCompany').value.id===1">
+				<p>Стоимость согласно текущим тарифам компании.</p>
+				<p>
+				Доставка осуществляется в следующие города:<br/>
+				Москва <br/>
+				Владимир<br/>
+				Тула<br/>
+				Тверь<br/>
+				Клин<br/>
+				Ярославль<br/>
+				</p>
+			</div>
+
+
+
+ 			<div class="transportCompany" *ngIf="myform.get('selectedTransportCompany').value && myform.get('selectedTransportCompany').value.id===2">
+
+
+
+<div formGroupName="transportCompany" class="well well-lg">
+			  <mat-form-field class="full-width">
+			    <input matInput placeholder="Наименование транспортной компании"
+			      formControlName="name" 
+			      name="name"
+			      id="name">
+			  </mat-form-field>
+			<div>
+<div>
+	Пункт назначения:
+</div>
+
+				<mat-radio-group class="example-radio-group" 
+					formControlName="deliveryAddress">
+				  <mat-radio-button class="example-radio-button" 
+				  *ngFor="let item of deliveryList" [value]="item">
+				    {{item.name}}
+				  </mat-radio-button>
+				</mat-radio-group>
+			</div>
+			<div>
+<div>
+	Упаковка:
+</div>
+				<mat-radio-group class="example-radio-group" formControlName="packType">
+				  <mat-radio-button class="example-radio-button" 
+				  *ngFor="let item of packList" [value]="item">
+				    {{item.name}}
+				  </mat-radio-button>
+				</mat-radio-group>
+			</div>
+
+			<div>
+<div>
+	Страховка:
+</div>
+			<mat-checkbox formControlName="insuranse" [labelPosition]="after">
+			Страховка</mat-checkbox>
+
+
+			</div>
+</div>			  
+			</div>
+ 		</div>
+
+	  </div>
+	</div>
+ 
+	<div class="panel panel-default" *ngIf="myform.get('selectedDeliveryType').value.id===2">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Самовывоз</h3>
+	  </div>
+	  <div class="panel-body">
+		<mat-form-field>
+		  <input matInput [matDatepicker]="picker1" placeholder="Дата самовывоза" [formControl]="date" [min]="minDate" >
+		  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+		  <mat-datepicker touchUi="true" #picker1></mat-datepicker>
+		</mat-form-field>
+		<p class="well">Пункт выдачи товара</p>
+
+	  </div>
+	</div>
+
+ 
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Оплата</h3>
+	  </div>
+	  <div class="panel-body">
+
+		<div *ngIf="selectedPayType.invalid && 
+		(selectedPayType.dirty ||selectedPayType.touched)"
+		     class="alert alert-danger">
+		  <div *ngIf="selectedPayType.errors.required">
+		    Укажите вид оплаты.
+		  </div>
+		</div>	
+
+
+		<div class="paytype-panel">
+			<mat-radio-group class="example-radio-group" formControlName="selectedPayType">
+			  <mat-radio-button class="example-radio-button" *ngFor="let types of payTypes" [value]="types">
+			    {{types.name}}
+			    
+			    <mat-icon *ngIf="types.id===3">credit_card</mat-icon>
+			  </mat-radio-button>
+			</mat-radio-group>
+		</div>
+	  </div>
+	</div>
+
+
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">Комментарий</h3>
+	  </div>
+	  <div class="panel-body">
+		<div class="paytype-panel">
+			<mat-form-field style="width: 100%">
+			  <textarea 
+			  formControlName="commentary" 
+			  matInput placeholder="Комментарий" matTextareaAutosize matAutosizeMinRows="2"
+			            matAutosizeMaxRows="25"></textarea>
+			</mat-form-field>
+		</div>
+	  </div>
+	</div>
+
+	<div class="total">
+	  	<h4 style="display: inline-block;">Итого по заказу:</h4>
+	  	<h2 style="display: inline-block;">
+	  		<span class="label label-default">
+	  			{{cartService.getOrderInfo(cartService.selectedWhouse.id).cost.toLocaleString()}} руб
+	  		</span>
+	  	</h2>
+  	</div>
+
+
+
+	<div class="buttons">
+<!-- 		<button type="submit" 
+			[disabled]="myform.invalid"
+			mat-raised-button color="primary">
+			Оформить
+		</button>
+ -->
+		<button type="submit"
+            [disabled]="myform.invalid" class="btn btn-success">Оформить заказ</button> &nbsp;		
+
+	</div>
+ 
+	</form>
+	</ng-container>		 
+</div>

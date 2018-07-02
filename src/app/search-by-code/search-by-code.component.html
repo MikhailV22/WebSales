@@ -1,0 +1,109 @@
+<!-- <div class="nav">
+
+      <a class="button" routerLink="/search-by-code" routerLinkActive="active">
+        
+      <img src="../assets/btnByCode.png"  height="30" style="top:-5px">
+      По коду
+
+    </a>
+      <a class="button" routerLink="/search-by-car" routerLinkActive="active">
+      <img src="../assets/btnByStep.png"  height="30" style="top:-5px">
+        По авто
+      </a>
+</div>  
+ -->
+<h3>Поиск по коду</h3>
+<div class='by-code-panel' *ngIf='searchPanelVisible'>
+
+<!--   <input 
+	   #edname size="10" 
+     (keyup.enter)="onEnter(edname.value)"
+  	[(ngModel)]="searchParam.name" placeholder="name"
+  />
+  <input 
+    #edeuro size="10" 
+    (keyup.enter)="onEnter(edeuro.value)"
+    [(ngModel)]="searchParam.euro" placeholder="eurocode"
+  />
+
+ -->
+  
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Наименование" value=""
+      [(ngModel)]="searchParam.name" 
+
+      name="name"
+      id="name"
+      #name="ngModel" 
+
+      (keyup.enter)="search()">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Год" value=""
+      [(ngModel)]="searchParam.year" 
+
+      name="year"
+      id="year"
+      #year="ngModel" 
+
+      (keyup.enter)="search()">
+  </mat-form-field>
+
+  <mat-form-field class="full-width" >
+    <input matInput placeholder="Код" value="" style="text-transform: uppercase;" 
+      [(ngModel)]="searchParam.euro" 
+
+      name="code"
+      id="code"
+      #code="ngModel" 
+
+      (keyup.enter)="search()">
+  </mat-form-field>
+
+
+<!--   <div class="field">
+    <span class="label">Наименование</span>
+    <div class="input_value">
+    <input 
+       #edname size="10" 
+       (keyup.enter)="search()"
+      [(ngModel)]="searchParam.name" placeholder="Наименование"
+    />
+    </div>
+  </div> -->
+
+<!--   <div class="field">
+    <span class="label">Год</span>
+    <div class="input_value">
+    <input size="10"  type="number" min="1900" max="2020" placeholder="Год"
+    (keyup.enter)="search()"
+    [(ngModel)]="searchParam.year"
+    />
+  </div>
+  </div> -->
+
+<!--   <div class="field">
+    <span class="label">Код</span>
+    <div class="input_value">
+    <input 
+    	#edeuro size="10" 
+      (keyup.enter)="search()"
+    	[(ngModel)]="searchParam.euro" placeholder="Код"
+    />
+  </div>
+  </div> -->
+  
+
+</div>
+<app-whouse-dialog (onRefresh)="onRefresh()"></app-whouse-dialog>
+<app-prodtype-dialog (onRefresh)="onRefresh()"></app-prodtype-dialog>
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="search()">Искать</button>
+    <button mat-raised-button color="warn"(click)="clear()" title="Очистить">Очистить</button>
+  </div>
+<p class="message">{{message}}</p>
+<button *ngIf="false" (click)="searchPanelToggle()">toggle</button>
+{{selectedId}}
+<app-result-panel></app-result-panel>
+

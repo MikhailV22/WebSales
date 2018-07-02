@@ -1,0 +1,20 @@
+.prod-images{
+	padding-top: 5px;
+}
+.prod-images .images{
+    padding: 2px;
+    display: inline-block;
+
+}
+
+.prod-images .image{
+    padding: 4px;
+    
+
+}
+
+.prod-images .image img{
+    
+    width: 100%;
+
+}

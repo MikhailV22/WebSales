@@ -1,0 +1,111 @@
+<div class="prod-panel" *ngIf='searchResult'>
+
+
+<app-prod-images *ngIf="searchResult.picturename" [euro]="searchResult.euro"></app-prod-images>
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Наименование:</label>
+	        </div>
+	        <div class="my-flex-block text-break">
+		        {{searchResult.name}}
+	        </div>
+		</div>
+
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Еврокод:</label>
+	        </div>
+	        <div class='my-flex-block euro'>
+		        {{searchResult.euro}}
+	        </div>
+
+		</div>
+<div *ngIf="searchResult.eurocode_descr"
+style="border: 1px chocolate dotted ;padding: 5px;background: #FFFFCC;white-space:pre-wrap;">{{searchResult.eurocode_descr}}</div>
+
+
+
+
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Тип товара:</label>
+	        </div>
+	        <div class='my-flex-block'>
+		        {{searchResult.prodtype_fullname}}
+	        </div>
+		</div>
+
+
+		<div class="my-flex-container" *ngIf="searchResult.remarks">
+	        <div class='my-flex-block'>
+				<label>Примечание:</label>
+	        </div>
+	        <div class='my-flex-block' style="color: darkred;">
+		        {{searchResult.remarks}}
+	        </div>
+		</div>
+
+		<div class="my-flex-container" *ngIf="searchResult.commentary">
+	        <div class='my-flex-block'>
+				<label>Комментарий:</label>
+	        </div>
+	        <div class='my-flex-block text-break'>
+		        {{searchResult.commentary}}
+	        </div>
+		</div>
+
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Автомобили:</label>
+	        </div>
+	        <div class='my-flex-block' style="white-space:pre-wrap;">{{searchResult.car_name}}</div>
+		</div>
+
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Размер:</label>
+	        </div>
+	        <div class='my-flex-block'>
+		        {{searchResult.dimension}}
+	        </div>
+		</div>
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Толщина:</label>
+	        </div>
+	        <div class='my-flex-block'>
+		        {{searchResult.thickness}}
+	        </div>
+		</div>
+
+		<div class="my-flex-container">
+	        <div class='my-flex-block'>
+				<label>Вес:</label>
+	        </div>
+	        <div class='my-flex-block'>
+		        {{searchResult.weight}}
+	        </div>
+		</div>
+
+<!-- 	<p><label>Наименование:</label>{{searchResult.name}}</p>
+	<p><label>Еврокод:</label>{{searchResult.euro}}</p>
+
+	<p><label>Описание:</label>{{searchResult.remarks}}</p>
+	
+	<p><label>Тип товара:</label>{{searchResult.prodtype_fullname}}</p>
+	
+	<p><label>Автомобили:</label>{{searchResult.car_name}}</p>
+	<p><label>Комментарий:</label>{{searchResult.commentary}}</p>
+	<p><label>Размер:</label>{{searchResult.dimension}}</p>
+	<p><label>Толщина:</label>{{searchResult.thickness}}</p>
+	<p><label>Вес:</label>{{searchResult.weight}}</p>
+ -->
+
+
+</div>

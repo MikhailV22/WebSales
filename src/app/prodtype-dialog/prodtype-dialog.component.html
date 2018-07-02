@@ -1,0 +1,23 @@
+<!-- <div class="prodtypes">
+	   	<div class="check-whouse" *ngFor="let item of prodtypes">
+	   		<input [(ngModel)]="item.selected" (change)="change()" type="checkbox" class="checkbox" id="checkbox{{item.id}}" name="prodtype"/> 
+			<label for="checkbox{{item.id}}">{{item.name}}</label>
+		</div>
+</div>		
+ -->
+
+
+<div class="prodtypes">
+	<mat-form-field style="width: 100%">
+	  <mat-select 
+
+
+	  (selectionChange)="onChange()" 
+			[(ngModel)]="searchParam.selectedProdType"
+			name="prodType"
+			
+	  placeholder="Тип товара"  multiple>
+	    <mat-option *ngFor="let item of prodtypes" [value]="item">{{item.name}}</mat-option>
+	  </mat-select>
+	</mat-form-field>
+</div>		

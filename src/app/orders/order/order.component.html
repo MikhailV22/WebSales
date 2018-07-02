@@ -1,0 +1,41 @@
+<div class="order-panel" [class.opened]="showDetailPanel">
+<div class="order-head">
+	   		<div class="col"> {{order.orignum}}</div>
+	   		<!-- <div class="col">{{order.regdate| date:"dd.MM.yyyy HH:mm"}}</div> -->
+			<!-- <div class="col">{{order.regdate| date:"dd.MM.yyyy"}}</div> -->
+	   		<div class="col cost"> 
+	   			{{order.cost.toLocaleString()}} руб
+	   			<div class="payed" *ngIf="order.sber_1c_status===0">Оплачен</div>
+
+	   		</div>
+	   		<div class="col amount"> {{order.amount}} шт</div>
+	   		
+	   		<!-- <div class="col delivery_typename"> {{order.delivery_typename}}</div> -->
+	   		<!-- <div class="col"> {{order.commentary}}</div> -->
+	   		<!-- <div class="col descr"> {{order.detailDescr}} </div> -->
+	   		<div class="col right">
+				<a [class.selected]="showDetailPanel" class="button" (click)="detailPanelToggle()">
+			        Состав
+			    </a>	   			
+				<a  class="button" (click)="openDialog()">
+			        Счет
+			    </a>	   			
+
+	   		</div>
+
+</div>
+<div class="detail">
+<!-- 	<div style="text-align: right; margin-right: 10px;">
+		<a [class.selected]="showDetailPanel" class="button" (click)="detailPanelToggle()">
+	        Состав
+	    </a>
+	</div>     -->
+
+	<div *ngIf="showDetailPanel">
+		<app-order-detail [order]='order'>
+			
+		</app-order-detail>
+	</div>
+</div>	
+</div>	
+

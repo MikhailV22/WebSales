@@ -1,0 +1,38 @@
+<h3>Заказы</h3>
+<div class="orders-panel">
+
+
+	<div *ngIf="isLoading" style="text-align: center;margin-top: 30px;">
+
+            <img  src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="  /><span style="margin-left: 10px;">Loading...</span>
+	</div>	
+
+
+	<div *ngIf="!isLoading">
+
+<!-- 		<p *ngIf="results" style="font-size: 12pt; color:#666362; text-align: center;">Найдено позиций: {{results.length}}</p> -->
+
+
+	   		<div class="record" *ngFor="let item of results; let i = index">
+
+
+ 	  		<div class="doc_date" *ngIf="i==0 || (results[i-1] && item.regdate.substring(8,10)!==results[i-1].regdate.substring(8,10))">
+ 	  			<span class="date">{{item.regdate | date:"dd.MM.yyyy"}}</span>
+ 	  		</div>  
+
+
+
+	   		<app-order 
+	   		[order]="item">
+	   			
+	   		</app-order>
+	   		</div>
+
+	</div>
+
+</div>
+
+
+
+
+

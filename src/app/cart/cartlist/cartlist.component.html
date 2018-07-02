@@ -1,0 +1,95 @@
+<div class="cart-detail">
+	
+
+<h3>
+  Корзина
+</h3>
+
+<div class="notification">
+	Заказ оформляется отдельно для каждого склада.
+</div>
+<!--     <a routerLink="/search-by-code" routerLinkActive="active">search-by-code</a>
+ -->
+<!-- <p *ngIf="cartService.results" style="font-size: 10pt; color:blue;text-align: center;">Найдено позиций: {{cartService.results.length}}</p> -->
+	<button *ngIf='false' (click)="cartService.refreshCart()">Refresh Cart</button>	
+
+
+<div class="whouse_group" *ngFor="let whouse of cartService.whouses;">
+	<div class="whouse_title">{{whouse.name}}
+		<span *ngIf="whouse.real_name" 
+		class="label label-info"
+		style="position: relative;top:-3px;">
+			(от {{whouse.delivery_time}}-х дней)
+		</span>
+	</div>
+
+<div class="record" *ngFor="let item of cartService.getListByWhouse(whouse.id)">
+
+	<div class="my-flex-container">
+	        <div class="my-flex-block euro">
+	        	 <div *ngIf="item.prod_id>0"> 
+	        	 	{{item.euro}}
+	        	 	<div class="tm tm_{{item.trademark_id}}"> {{item.trademark_name}}</div>
+	        	 </div>
+	        	 <div *ngIf="item.prod_id<0"> {{item.prod_name}}</div>
+	        	 
+	        </div>
+	        <div class='my-flex-block'>
+	        	{{item.price.toLocaleString()}} p.
+	        </div>
+	        <div class="my-flex-block"> 
+	        	<div class="buttons">
+					<input 
+					size="1" 
+					type="number" 
+					style="width: 40px" 
+					#amount="ngModel"
+						[(ngModel)]="item.amount" placeholder="Кол-во"
+					/>
+
+					<button mat-icon-button 
+						*ngIf="amount.dirty"
+					 	(click)="editCart(item)">
+						<mat-icon>save</mat-icon>
+					</button>	
+
+					<button mat-icon-button (click)="delCart(item.id)">
+						<mat-icon>delete</mat-icon>
+					</button>	
+				</div>
+
+	        </div> 
+	</div>
+
+</div>
+
+  <div class="buttons">
+  	<div class="orderTotal">
+  	Итого: 
+  		<span class="price"> 
+  			{{cartService.getOrderInfo(whouse.id).amount.toLocaleString()}} 
+  		</span> шт	
+  		<span class="price"> 
+  			{{cartService.getOrderInfo(whouse.id).cost.toLocaleString()}} 
+  		</span> руб	
+  	</div>
+  	
+  	<div class="delivery_commentary">{{whouse.delivery_commentary}}</div>
+		<button mat-raised-button color="primary" routerLink="/cart-confirm" routerLinkActive="active" (click)="confirmWhouse(whouse)">
+    		Оформить
+		</button>
+
+  </div>
+	
+</div>
+
+
+
+	<div class="cart-total">
+		Итого в корзине:
+	  {{cartService.amount_total.toLocaleString()}} шт
+	  {{cartService.price_total.toLocaleString()}} руб
+
+  	</div>
+
+</div>

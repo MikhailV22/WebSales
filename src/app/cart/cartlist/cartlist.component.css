@@ -1,0 +1,104 @@
+.my-flex-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 750px;
+    min-width: 300px;
+/*    height: 35px;
+*/}     
+.my-flex-block{
+/*    min-width: 140px;
+*/    word-wrap:normal;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-right: 5px; 
+    padding: 3px;
+    /*border:1px solid red;*/
+    /*flex-basis:100px;*/
+}       
+
+.my-flex-block.euro{
+    width: 150px;
+
+}
+
+/*.record:nth-child(even){
+    background-color: #f2f2f2;
+}
+*/
+.whouse_group .record{
+    border-bottom: 1px dashed silver;
+    
+}
+
+/*.whouse_group .record:last-of-type{
+    border-bottom: 0px dashed silver;
+    background-color: red;
+    padding: 2px; 
+}
+*/
+
+
+.cart-detail .whouse_group{
+    margin:15px 0px; 
+    border: 1px solid gray;
+}
+
+.cart-detail .whouse_group .delivery_commentary{
+    display: inline-block;
+    color: red;
+}
+
+.cart-detail .whouse_group .whouse_title{
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    background-color: gray;
+    
+}
+
+.cart-detail .whouse_group .whouse_title span{
+    font-size: 1.4rem;
+}
+
+.cart-detail .notification{
+    font-size: 1.8rem;
+    background-color: #ffff99;
+    padding:5px;
+    text-align: center;
+    border: 1px solid #ffd9b3;
+    color: #4d4d4d;
+    margin: 5px 0;
+}
+
+.whouse{
+    
+    flex-basis:50px;
+}
+
+.buttons{
+    margin:0px;
+    padding: 5px 5px;
+    /*width: 140px;*/
+    text-align: right;
+    /*border:1px solid red;*/
+}
+.cart-detail .cart-total{
+	text-align: right;
+	font-size: 2rem;
+	padding-top: 20px;
+}
+
+.tm{
+    /*text-align: center;*/
+    font-size: 10pt;
+}
+
+.orderTotal{
+    font-size: 1.6rem;
+    padding: 3px 0px;
+}
+
+.orderTotal .price{
+/*    color: red;*/
+}

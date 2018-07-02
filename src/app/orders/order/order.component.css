@@ -1,0 +1,74 @@
+.order-panel{
+	border-left: 2px solid white;
+	padding: 3px 0px;
+}
+
+.order-panel.opened{
+	/*border-left: 2px solid gray;*/
+	box-shadow: 2px 2px 13px 0px #3090C7;
+}
+
+.order-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 750px;
+    min-width: 300px;
+    padding: 3px 3px;
+/*    height: 35px;
+*/} 
+
+.order-panel.opened .order-head{
+	background-color: #999999;
+	color: white;
+}
+.order-head .payed{
+	background-color: #ccffcc;
+	border-radius: 2px;
+}
+
+.col{
+/*    min-width: 140px;
+*/    word-wrap:normal;
+    margin-right: 2px; 
+    padding: 5px 0px;
+    /*border: 1px solid red;*/
+}               
+
+.cost{
+	/*flex-basis:100px;*/
+	text-align: center;
+}
+
+.amount{
+	/*flex-basis:50px;*/
+	text-align: center;
+}
+
+.delivery_typename{
+	flex-basis:80px;
+}
+
+.descr{
+	white-space: pre;
+}
+
+
+.button{
+    display: inline-block;
+    background-color: #3090C7;
+    border: 1px solid #2e6da4;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 5px;
+    padding: 0px 5px;
+    color: white;
+}
+.button:hover{
+    text-decoration: none;
+    background-color: #337ab7;
+    cursor: pointer;
+    color: white;
+}

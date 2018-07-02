@@ -1,0 +1,16 @@
+.accaunt-panel{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    max-width: 750px;
+    padding: 10px 0px;
+/*    min-width: 340px;
+*//*    height: 35px;
+*/}     
+.prod-panel .my-flex-block{
+/*    min-width: 140px;*/
+    /*word-wrap:break-word;*/
+/*    border: 1px solid red;*/
+}                

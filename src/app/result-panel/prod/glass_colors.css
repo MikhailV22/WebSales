@@ -1,0 +1,54 @@
+.WS_GLASS{
+  position: relative;
+    top:2px;
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+/*    border:1px #00a0f5 solid;*/
+}
+
+.TOP{
+    top:0px;
+   display:none;
+   height: 30%;
+   width: 100%;
+   border-bottom:1px #333 solid;
+}
+
+.GLASS{
+/*    margin-top:2px; */
+    height: 100%;
+    border:1px #b5b4b4 solid;
+}
+
+.GA, .GB, .GC, .GN, .GS {
+  display:block;
+  background-color: #32CD32;
+}
+
+.LG{
+    display:block;
+    background-color: #ccffcc;
+}
+
+.GY, .YA, .YC, .YS{
+    display:block;
+    background-color: #AFAFAF;
+}
+
+.CA, .CB, .CC, .CD, .CL, .CH, .CK {
+    display:block;
+    background-color: white;
+/*    border: 1px solid #AFAFAF;*/
+}
+
+
+.BA, .BB, .BL, .BS{
+    display:block;
+    background-color: #00a0f5;
+}
+
+.BZ{
+    display:block;
+    background-color: #cd7f32;
+}

@@ -1,0 +1,8 @@
+.result-panel{
+	border: 0px solid silver;
+}
+
+.result-block:nth-child(even){
+	background-color: #FBF6D9;
+}
+

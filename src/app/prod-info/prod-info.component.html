@@ -1,0 +1,10 @@
+<p>
+  prod-info works!
+</p>
+<div *ngIf='searchResult'>
+	<p>{{searchResult.id}}</p>
+	<p>{{searchResult.name}}</p>
+	<p>{{searchResult.euro}}</p>
+</div>
+<!--     <a routerLink="/search-by-code" routerLinkActive="active">По коду</a> -->
+    <a (click)="gotoList(searchResult)" routerLinkActive="active">Back</a>
